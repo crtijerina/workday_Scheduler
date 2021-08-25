@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../UTA-VIRT-BO-FSF-PT-04-2021-U-B-1/05-Third-Party-APIs/02-Challenge"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "workday_Scheduler"
+	}
+}

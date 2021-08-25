@@ -3,9 +3,59 @@ $(document).ready(function () {
   $("#demo").text(
     result.toLocaleString({ weekday: "long", month: "long", day: "numeric" })
   );
+  // aray time blocks
+
+  let currentHour = result.toFormat("H")
+  let timeBlock = [
+    {
+      hour: "9am",
+      id: 9,
+      content: "",
+    },
+    {
+      hour: "10am",
+      id: 10,
+      content: "",
+    },
+    {
+      hour: "11am",
+      id: 11,
+      content: "",
+    },
+    {
+      hour: "12pm",
+      id: 12,
+      content: "",
+    },
+    {
+      hour: "1pm",
+      id: 13,
+      content: "",
+    },
+    {
+      hour: "2pm",
+      id: 14,
+      content: "",
+    },
+    {
+      hour: "3pm",
+      id: 15,
+      content: "",
+    },
+    {
+      hour: "4pm",
+      id: 16,
+      content: "",
+    },
+    {
+      hour: "5pm",
+      id: 17,
+      content: "",
+    },
+  ];
 
   // creating time blocks
-  for (let i = 9; i <= 17; i++) {
+  for (let i = 0; i <= timeBlock.length; i++) {
     var row = document.createElement("div");
     $(row).addClass("row");
     $(".container").append(row);
@@ -13,14 +63,7 @@ $(document).ready(function () {
     var hourBlk = document.createElement("div");
     $(hourBlk).addClass("hour col-1");
     $(row).append(hourBlk);
-
-    if (i < 12) {
-      $(hourBlk).text(i + "am");
-    } else if ((i === 12)) {
-      $(hourBlk).text(i + "pm");
-    } else {
-      $(hourBlk).text((i % 12) + "pm");
-    }
+    $(hourBlk).text(timeBlock[i].hour)
 
     var textArea = document.createElement("textarea");
     $(textArea).addClass("time-block col-10 description");
@@ -29,5 +72,16 @@ $(document).ready(function () {
     var DaButton = document.createElement("button");
     $(DaButton).addClass("far fa-save saveBtn col-1");
     $(row).append(DaButton);
+  
+    if (timeBlock[i].id < currentHour){
+      $(textArea).addClass("past")}
+      
+  else if (timeBlock[i].id > currentHour){
+    $(textArea).addClass("future")}
+
+    else if (timeBlock[i].id = currentHour){
+      $(textArea).addClass("present")} 
+    
   }
+
 });
