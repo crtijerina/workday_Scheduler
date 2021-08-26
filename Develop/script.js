@@ -53,17 +53,18 @@ $(document).ready(function () {
       content: "",
     },
   ];
+// get the items form local Storage
+
+var list = JSON.parse(localStorage.getItem('schedule'));
 
   // creating time blocks
-  for (let i = 0; i <= timeBlock.length; i++) {
+  for (let i = 0; i < timeBlock.length; i++) {
     var row = document.createElement("div");
     $(row).addClass("row");
     $(".container").append(row);
-
-    var hourBlk = document.createElement("div");
-    $(hourBlk).addClass("hour col-1");
+    let hourBlk = $("<div></div>").addClass("hour col-1");
     $(row).append(hourBlk);
-    $(hourBlk).text(timeBlock[i].hour)
+    $(hourBlk).text(timeBlock[i].hour);
 
     var textArea = document.createElement("textarea");
     $(textArea).addClass("time-block col-10 description");
@@ -83,5 +84,16 @@ $(document).ready(function () {
       $(textArea).addClass("present")} 
     
   }
+
+  $(".saveBtn").on("click", function(event){
+    event.preventDefault();
+    for (let i = 0; i < timeBlock.length; i++) {
+   
+      timeBlock[i].content = $(".time-block")[i].value
+      localStorage.setItem('schedule', JSON.stringify(timeBlock));
+    }
+
+    
+  })
 
 });
