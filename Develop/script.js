@@ -68,6 +68,7 @@ var list = JSON.parse(localStorage.getItem('schedule'));
 
     var textArea = document.createElement("textarea");
     $(textArea).addClass("time-block col-10 description");
+    $(textArea).text(list[i].content)
     $(row).append(textArea);
 
     var DaButton = document.createElement("button");
